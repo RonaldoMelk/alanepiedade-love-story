@@ -43,7 +43,7 @@ const WeddingDetails = () => {
             </p>
             <div className="aspect-video w-full rounded-xl overflow-hidden mb-4">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3741.738356355188!2d-40.29547542457771!3d-20.319063950661387!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xb83dae980000001%3A0x7070c9a13ee992e1!2sRestaurante%20Panela%20de%20Barro!5e0!3m2!1spt-BR!2sbr!4v1708466783264!5m2!1spt-BR!2sbr"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3745.933446344899!2d-40.289833!3d-20.188844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91caffd87fa7d1%3A0x6a0f67dbce6c7f4e!2sRestaurante%20Panela%20de%20Barro!5e0!3m2!1spt-BR!2sbr!4v1708466783264!5m2!1spt-BR!2sbr"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -53,7 +53,7 @@ const WeddingDetails = () => {
               />
             </div>
             <a 
-              href="https://www.google.com/maps?q=restaurante+panela+de+barro+espirito+santo"
+              href="https://www.google.com/maps?sca_esv=6e4820828e77e658&output=search&q=restaurante+panela+de+barro+espirito+santo&source=lnms&fbs=AIIjpHydJdUtNKrM02hj0s4nbm4yAFb4PvhjIUcDtaFHkK_tyuYI-oop_yy363GIWnDaQcLdffliJc5eOXOgXlGZ1RFDUJYLhzZUo7x4MeTOv5cdy1LQoCjD_dKTOV55Pgg8ZyG255VZNdcvLxthXQjGQutN65wzEl47_V4SGDX70YXJNuQzdWX8x1D0WYb40VJ2CBMjekpBdC_FclNgiKZk9PeTZZckbg&entry=mc&ved=1t:200715&ictx=111"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-primary hover:underline"
