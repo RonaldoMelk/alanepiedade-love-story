@@ -89,12 +89,14 @@ const LoveStory = () => {
                 ))}
               </div>
 
-              <FullscreenImage
-                isOpen={selectedImage === phase.images[0] || selectedImage === phase.images[1]}
-                onClose={() => setSelectedImage(null)}
-                src={selectedImage || ""}
-                alt={`Foto de ${phase.title}`}
-              />
+              {selectedImage && (
+                <FullscreenImage
+                  isOpen={true}
+                  onClose={() => setSelectedImage(null)}
+                  src={selectedImage}
+                  alt={`Foto de ${phase.title}`}
+                />
+              )}
             </div>
           ))}
         </div>
