@@ -1,24 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MessageCircle, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { toast } from "@/hooks/use-toast";
-
-interface Message {
-  id: number;
-  name: string;
-  message: string;
-  date: string;
-}
+import { getGuestMessages, addGuestMessage, type GuestMessage } from "@/lib/guest-book";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
 const GuestBook = () => {
-  const [messages, setMessages] = useState<Message[]>([]);
-  
+  const queryClient = useQueryClient();
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
+  
+  const { data: messages = [] } = useQuery<GuestMessage[]>({
+    queryKey: ["guestMessages"],
+    queryFn: getGuestMessages
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const mutation = useMutation({
+    mutationFn: (variables: { name: string; message: string }) => 
+      addGuestMessage(variables.name, variables.message),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["guestMessages"] });
+    }
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!name.trim() || !message.trim()) {
@@ -30,21 +37,26 @@ const GuestBook = () => {
       return;
     }
 
-    const newMessage: Message = {
-      id: messages.length + 1,
-      name: name.trim(),
-      message: message.trim(),
-      date: "Agora"
-    };
+    try {
+      await mutation.mutateAsync({ 
+        name: name.trim(), 
+        message: message.trim() 
+      });
 
-    setMessages([newMessage, ...messages]);
-    setName("");
-    setMessage("");
-    
-    toast({
-      title: "Mensagem enviada!",
-      description: "Obrigado por deixar sua mensagem para o casal ❤️"
-    });
+      setName("");
+      setMessage("");
+      
+      toast({
+        title: "Mensagem enviada!",
+        description: "Obrigado por deixar sua mensagem para o casal ❤️"
+      });
+    } catch (error) {
+      toast({
+        title: "Erro ao enviar mensagem",
+        description: "Houve um problema ao salvar sua mensagem. Por favor, tente novamente.",
+        variant: "destructive"
+      });
+    }
   };
 
   return (
@@ -104,7 +116,15 @@ const GuestBook = () => {
             >
               <div className="flex justify-between items-start mb-3">
                 <p className="font-semibold text-foreground">{msg.name}</p>
-                <p className="text-sm text-muted-foreground">{msg.date}</p>
+                <p className="text-sm text-muted-foreground">
+                  {new Date(msg.created_at).toLocaleDateString('pt-BR', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                  })}
+                </p>
               </div>
               <p className="text-muted-foreground leading-relaxed">{msg.message}</p>
             </div>
