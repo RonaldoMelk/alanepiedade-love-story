@@ -13,20 +13,7 @@ interface Message {
 }
 
 const GuestBook = () => {
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: 1,
-      name: "Maria Silva",
-      message: "Que Deus abençoe essa união! Muito feliz por vocês! 💕",
-      date: "Há 2 dias"
-    },
-    {
-      id: 2,
-      name: "João Santos",
-      message: "Parabéns ao casal! Desejo toda felicidade do mundo para vocês!",
-      date: "Há 3 dias"
-    }
-  ]);
+  const [messages, setMessages] = useState<Message[]>([]);
   
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
