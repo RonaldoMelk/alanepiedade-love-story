@@ -1,12 +1,26 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import Hero from "@/components/Hero";
+import LoveStory from "@/components/LoveStory";
+import CoupleMessages from "@/components/CoupleMessages";
+import WeddingDetails from "@/components/WeddingDetails";
+import GuestBook from "@/components/GuestBook";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen">
+      <Hero />
+      <LoveStory />
+      <CoupleMessages />
+      <WeddingDetails />
+      <GuestBook />
+      
+      <footer className="py-8 text-center bg-secondary/30 border-t border-border">
+        <p className="text-muted-foreground">
+          Alan & Piedade • 30 de Outubro de 2025
+        </p>
+        <p className="text-sm text-muted-foreground mt-2">
+          Feito com ❤️ para celebrar nosso amor
+        </p>
+      </footer>
     </div>
   );
 };
