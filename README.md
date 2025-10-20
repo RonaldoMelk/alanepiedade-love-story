@@ -1,10 +1,30 @@
-# Welcome to your Lovable project
+# Site do Casamento Alan e Piedade
 
-## Project info
+Site desenvolvido para celebrar o casamento de Alan e Piedade, que acontecerá no dia 30 de Outubro de 2025.
 
-**URL**: https://lovable.dev/projects/e43a41c1-8816-44a3-8a79-216b8e00e9fe
+## Local do Evento
 
-## How can I edit this code?
+O casamento será realizado no Restaurante Panela de Barro, um dos locais mais tradicionais da culinária capixaba.
+
+📍 [Ver no Google Maps](https://www.google.com/maps?q=restaurante+panela+de+barro+espirito+santo)
+
+## Tecnologias Utilizadas
+
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- shadcn/ui
+- Supabase (para o livro de mensagens)
+
+## Funcionalidades
+
+- História do casal
+- Detalhes do casamento
+- Livro de mensagens para os convidados
+- Confirmação de presença
+
+## Como editar este código?
 
 There are several ways of editing your application.
 
