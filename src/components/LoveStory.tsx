@@ -5,8 +5,11 @@ import phase2img1 from "@/assets/phase2-engaged1.jpg";
 import phase2img2 from "@/assets/phase2-engaged2.jpg";
 import phase3img1 from "@/assets/phase3-wedding1.jpg";
 import phase3img2 from "@/assets/phase3-wedding2.jpg";
+import { FullscreenImage } from "@/components/ui/fullscreen-image";
+import { useState } from "react";
 
 const LoveStory = () => {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const phases = [
     {
       icon: Heart,
@@ -69,18 +72,29 @@ const LoveStory = () => {
 
               <div className="flex-1 grid grid-cols-2 gap-4">
                 {phase.images.map((img, imgIndex) => (
-                  <div 
+                  <button 
                     key={imgIndex}
-                    className="relative aspect-square rounded-2xl overflow-hidden shadow-[var(--shadow-soft)] border border-border hover:scale-105 transition-transform duration-300"
+                    onClick={() => setSelectedImage(img)}
+                    className="relative aspect-square rounded-2xl overflow-hidden shadow-[var(--shadow-soft)] border border-border hover:scale-105 transition-transform duration-300 cursor-pointer group"
                   >
                     <img 
                       src={img} 
                       alt={`${phase.title} - Foto ${imgIndex + 1}`}
                       className="w-full h-full object-cover"
                     />
-                  </div>
+                    <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                      <span className="text-white text-sm font-medium">Clique para ampliar</span>
+                    </div>
+                  </button>
                 ))}
               </div>
+
+              <FullscreenImage
+                isOpen={selectedImage === phase.images[0] || selectedImage === phase.images[1]}
+                onClose={() => setSelectedImage(null)}
+                src={selectedImage || ""}
+                alt={`Foto de ${phase.title}`}
+              />
             </div>
           ))}
         </div>
