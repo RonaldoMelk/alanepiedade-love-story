@@ -128,3 +128,28 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes fall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(50vh) rotate(180deg) scale(0.8);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg) scale(0.6);
+    opacity: 0;
+  }
+}
+
+.rose-petal {
+  position: fixed;
+  pointer-events: none;
+  z-index: 50;
+  animation: fall linear;
+  will-change: transform;
+  font-size: 1.5rem;
+  filter: drop-shadow(0 0 5px rgba(255, 192, 203, 0.5));
+}
